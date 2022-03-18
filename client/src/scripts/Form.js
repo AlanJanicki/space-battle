@@ -220,6 +220,7 @@ class Form extends Common {
         })
         .then((res) => {
           if (res.status === 200 && this.#formType === DELETE_ACCOUNT_FORM_ID) {
+            this.#handleHTTPRequestStatus(this.#deleteAccountSubmitButton, FINISH_HTTP_REQUEST);
             this.#handleUserActionSuccess('Konto zostało usunięte', [
               FORM_INFO_CLASS,
               FORM_INFO_DELETE_ACCOUNT_CLASS,
@@ -232,7 +233,6 @@ class Form extends Common {
             this.#handleServerErrors(err.response.data);
           }
         });
-      this.#handleHTTPRequestStatus(this.#deleteAccountSubmitButton, FINISH_HTTP_REQUEST);
     }
   }
 
