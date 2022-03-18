@@ -59,6 +59,7 @@ class Loader extends Common {
 
     const audio = new Audio();
     audio.src = src;
+    audio.load();
     audio.addEventListener('canplaythrough', (e) => this.#handleElementLoaded(e));
     return audio;
   }
