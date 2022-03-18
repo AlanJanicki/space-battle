@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Space Battle!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <div class="game">
+      <div class="game__container">
+        <div class="game__layer menu" id="js-main-menu">
+          <img class="menu__logo" src="images/spaceship_enemy_red.png" alt="" />
+          <div class="menu__controls" id="js-menu-user-logged-out">
+            <button class="menu__button" id="js-login-button">Zaloguj się</button>
+            <button class="menu__button" id="js-register-button">Utwórz konto</button>
+          </div>
+
+          <div class="menu__controls" id="js-menu-user-logged-in">
+            <button
+              class="menu__button menu__button--user-logged-in menu__button--play"
+              id="js-play-button"
+            ></button>
+            <button class="menu__button menu__button--user-logged-in" id="js-settings-button">
+              Ustawienia
+            </button>
+            <button class="menu__button menu__button--user-logged-in" id="js-delete-account-button">
+              Usuń konto
+            </button>
+            <button class="menu__button menu__button--user-logged-in" id="js-logout-button">
+              Wyloguj się
+            </button>
+          </div>
+        </div>
+
+        <div class="game__layer modal hidden" id="js-modal">
+          <div class="modal__close">
+            <button class="modal__close__button" id="js-close-button">&times;</button>
+          </div>
+
+          <form class="form hidden" id="js-login-form">
+            <input
+              class="form__input"
+              maxlength="15"
+              type="text"
+              placeholder="Login"
+              id="js-login-form-login-input"
+            />
+            <input
+              class="form__input"
+              maxlength="20"
+              type="password"
+              placeholder="Hasło"
+              id="js-login-form-password-input"
+            />
+            <button class="form__button" type="submit" id="js-login-form-submit-button">
+              Zaloguj się
+            </button>
+          </form>
+
+          <form class="form form--register hidden" id="js-register-form">
+            <input
+              class="form__input"
+              maxlength="50"
+              type="text"
+              placeholder="Imię"
+              id="js-register-form-name-input"
+            />
+            <input
+              class="form__input"
+              maxlength="15"
+              type="text"
+              placeholder="Login"
+              id="js-register-form-login-input"
+            />
+            <span class="form__password-warning" id="js-formPasswordWarning"
+              >Proszę użyć hasła, które nie jest używane w innych serwisach.</span
+            >
+            <input
+              class="form__input"
+              maxlength="20"
+              type="password"
+              placeholder="Hasło"
+              id="js-register-form-password-input"
+            />
+            <input
+              class="form__input"
+              maxlength="20"
+              type="password"
+              placeholder="Powtórz hasło"
+              id="js-register-form-passwordRepeated-input"
+            />
+            <button class="form__button" type="submit" id="js-register-form-submit-button">
+              Utwórz konto
+            </button>
+          </form>
+
+          <form class="form hidden" id="js-delete-account-form">
+            <span class="form__warning--delete-account"
+              >Ta operacja spowoduje usunięcie konta wraz z postępami w grze! <br />
+              Czy kontynuować?</span
+            >
+            <button class="form__button" type="submit" id="js-delete-account-form-submit-button">
+              Usuń konto
+            </button>
+          </form>
+
+          <div class="settings hidden" id="js-settings">
+            <div class="settings__sound">
+              <button
+                class="settings__button settings__button--sound-on"
+                id="js-toggle-sound-button"
+              >
+                <span class="fa-solid fa-volume-high" id="js-toggle-sound-icon"></span>
+              </button>
+              <button class="settings__button" id="js-increase-sound-volume-button">
+                <span class="fa-solid fa-plus"></span>
+              </button>
+              <button class="settings__button" id="js-decrease-sound-volume-button">
+                <span class="fa-solid fa-minus"></span>
+              </button>
+            </div>
+            <div class="settings__music">
+              <button
+                class="settings__button settings__button--music-on"
+                id="js-toggle-background-music-button"
+              >
+                <span class="fa-solid fa-music"></span>
+              </button>
+              <button class="settings__button" id="js-increase-background-music-volume-button">
+                <span class="fa-solid fa-plus"></span>
+              </button>
+              <button class="settings__button" id="js-decrease-background-music-volume-button">
+                <span class="fa-solid fa-minus"></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="menu hidden" id="js-game-menu">
+            <div class="menu__controls">
+              <button
+                class="menu__button menu__button--in-game menu__button--resume"
+                id="js-resume-game-button"
+              >
+                Wznów grę
+              </button>
+              <button class="menu__button menu__button--in-game" id="js-settings-in-game-button">
+                Ustawienia
+              </button>
+              <button class="menu__button menu__button--in-game" id="js-reset-game-button">
+                Rozpocznij poziom od nowa
+              </button>
+              <button class="menu__button menu__button--in-game" id="js-back-to-main-menu-button">
+                Powrót do głównego menu
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="game__layer level-select hidden" id="js-level-select">
+          <span class="level-select__info">Wybierz dostępny poziom trudności</span>
+          <div class="level-select__levels" id="js-level-select-levels"></div>
+          <button class="level-select__back" id="js-level-select-back-button">
+            Powrót do menu
+          </button>
+        </div>
+
+        <canvas class="game__layer hidden" id="js-game-screen"></canvas>
+
+        <button
+          class="menu__button menu__button--open-game-menu hidden"
+          tabindex="-1"
+          id="js-open-game-menu-button"
+        >
+          <span class="fa-solid fa-bars"></span>
+        </button>
+
+        <div class="game__layer result hidden" id="js-result">
+          <span class="result__info" id="js-result-info"></span>
+          <span class="result__icon fa-solid" id="js-result-icon"></span>
+          <button class="result__button" id="js-back-to-main-menu-button-result-screen">
+            Powrót do głównego menu
+          </button>
+        </div>
+
+        <div class="game__layer loading hidden" id="js-loading">
+          <span class="loading__info">Ładowanie gry...</span>
+          <span class="loading__status"
+            >Załadowano: <span class="loading__status" id="js-loaded-elements"></span> z
+            <span class="loading__status" id="js-total-elements"></span>
+            <span class="loading__status">el</span></span
+          >
+          <span class="loading__spinner"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

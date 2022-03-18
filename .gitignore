@@ -1,6 +1,8 @@
 # dependencies
 /backend/node_modules
 /client/node_modules
+/client/src/images
+/client/src/sounds
 /.pnp
 .pnp.js
 
@@ -8,7 +10,7 @@
 /coverage
 
 # production
-/client/build
+/client/dist
 
 # misc
 .env

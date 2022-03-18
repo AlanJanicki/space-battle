@@ -1,0 +1,52 @@
+.level-select {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__info {
+    color: #8bafce;
+    font-size: 24px;
+  }
+
+  &__levels {
+    margin: 25px 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+  }
+
+  &__level {
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fd3848;
+    background: none;
+    font-size: 20px;
+    color: #8bafce;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      border: 1px solid #7cfac3;
+      text-decoration: underline;
+      outline: 0;
+    }
+  }
+
+  &__back {
+    margin-top: 50px;
+    padding: 10px 15px;
+    background: none;
+    border: 1px solid #567b98;
+    color: #9dadbc;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      border: 1px solid #7cfac3;
+      text-decoration: underline;
+      outline: 0;
+    }
+  }
+}

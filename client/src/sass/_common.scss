@@ -1,0 +1,21 @@
+:root {
+  --scale-value: 1.5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  user-select: none;
+}
+
+body {
+  background-color: #000;
+  background: url('./images/background.jpg');
+}
+
+.hidden {
+  display: none;
+}

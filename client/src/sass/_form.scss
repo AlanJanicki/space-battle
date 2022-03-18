@@ -1,0 +1,71 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  width: 80%;
+
+  &__input {
+    margin: 10px 0;
+    padding: 5px 0 5px 15px;
+    border: none;
+
+    &:focus {
+      border: 1px solid #7cfac3;
+      outline: 0;
+    }
+  }
+
+  &__button {
+    margin: 20px auto 0 auto;
+    width: 200px;
+    height: 50px;
+    border: 1px solid #8bafce;
+    background: none;
+    color: #7cfac3;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      border: 1px solid #7cfac3;
+      text-decoration: underline;
+      outline: 0;
+    }
+  }
+
+  span {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  &__error {
+    color: red;
+  }
+
+  &__password-warning {
+    @at-root span#{&} {
+      font-size: 12px;
+      color: #7cfac3;
+    }
+  }
+
+  &__warning--delete-account {
+    @at-root span#{&} {
+      color: red;
+      font-size: 18px;
+    }
+  }
+
+  &__warning,
+  &__info {
+    color: green;
+  }
+
+  &__info--delete-account {
+    font-size: 24px;
+  }
+
+  &--register input {
+    margin: 6px 0;
+  }
+}

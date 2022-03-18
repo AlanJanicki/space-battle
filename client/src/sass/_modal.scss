@@ -1,0 +1,36 @@
+.modal {
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 80%;
+  border-radius: 10px;
+  background: linear-gradient(356deg, rgba(74, 73, 73, 1) 0%, rgba(137, 155, 166, 1) 75%);
+  overflow: scroll;
+
+  &__close {
+    margin: 15px 15px 0 0;
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 100%;
+
+    &__button {
+      background: none;
+      border: none;
+      color: #364954;
+      font-size: 26px;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        color: #7cfac3;
+        outline: 0;
+      }
+    }
+  }
+}
