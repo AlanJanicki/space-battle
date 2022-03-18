@@ -57,7 +57,7 @@ export const validateRegisterInput = (login, name, password, passwordRepeated) =
 export const validateGameLevel = (gameLevel) => {
   const errors = [];
 
-  if (typeof gameLevel !== 'string') {
+  if (typeof gameLevel !== 'number') {
     errors.push({ gameLevel: 'Nieprawidłowy format poziomu gry' });
   }
 

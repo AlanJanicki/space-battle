@@ -10,7 +10,7 @@ const verifyAuth = (req) => {
     const token = authHeader.split('Bearer ')[1];
     if (token) {
       try {
-        const user = jwt.verify(token, JSONWT_KEY);
+        const user = jwt.verify(token, JSONWT_KEY, { ignoreExpiration: true });
         return user;
       } catch (err) {
         errors.push({
@@ -20,7 +20,7 @@ const verifyAuth = (req) => {
       }
     }
     errors.push({
-      categorizedErrors: 'Nie odnaleziono tokenu w formacie "Bearer <token>',
+      uncategorizedErrors: 'Nie odnaleziono tokenu w formacie "Bearer <token>',
     });
     return errors;
   }

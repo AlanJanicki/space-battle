@@ -52,7 +52,7 @@ export default class UsersDAO {
       const matchingPassword = await bcrypt.compare(password, user.password);
       if (!matchingPassword) {
         errors.push({
-          login: 'Nieprawidłowe hasło',
+          password: 'Nieprawidłowe hasło',
         });
         return errors;
       }

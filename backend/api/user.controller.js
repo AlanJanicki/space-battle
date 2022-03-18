@@ -10,10 +10,12 @@ import {
 } from '../utils/validator.js';
 import verifyAuth from '../utils/verifyAuth.js';
 
-const generateToken = (id) => {
+const generateToken = (gameLevel, id, name) => {
   return jwt.sign(
     {
+      gameLevel,
       id,
+      name,
     },
     process.env.JSONWT_KEY,
     {
@@ -69,7 +71,7 @@ export default class UserController {
         return;
       }
 
-      const token = generateToken(user._id.toString());
+      const token = generateToken(user.gameLevel, user._id.toString(), user.name);
 
       res.status(200).json({
         gameLevel: user.gameLevel,
@@ -103,7 +105,7 @@ export default class UserController {
       const password = await bcrypt.hash(req.body.password, 10);
 
       const user = await UsersDAO.register({
-        gameLevel: 0,
+        gameLevel: 1,
         login: req.body.login,
         name: req.body.name,
         password,
@@ -150,7 +152,11 @@ export default class UserController {
         return;
       }
 
-      const token = generateToken(updatedUser._id.toString());
+      const token = generateToken(
+        updatedUser.gameLevel,
+        updatedUser._id.toString(),
+        updatedUser.name
+      );
 
       res.status(200).json({
         gameLevel: updatedUser.gameLevel,
