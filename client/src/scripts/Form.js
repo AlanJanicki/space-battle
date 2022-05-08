@@ -367,7 +367,7 @@ class Form extends Common {
     currentWarnings.forEach(
       (currentWarning) =>
         !warnings.some(
-          (warning) => Object.keys(warning).toString() === currentWarning.nextSibling.id
+          (warning) => Object.keys(warning).toString() === currentWarning.nextElementSibling.id
         ) && currentWarning.remove()
     );
   }
