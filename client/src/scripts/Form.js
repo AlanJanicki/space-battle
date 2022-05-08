@@ -356,10 +356,20 @@ class Form extends Common {
   }
 
   #clearFormWarnings() {
-    const warnings = document.querySelectorAll(`.${FORM_WARNING_CLASS}`);
-    if (warnings) {
-      warnings.forEach((warning) => warning.remove());
-    }
+    const currentWarnings = document.querySelectorAll(`.${FORM_WARNING_CLASS}`);
+    const dataToValidate = {};
+    currentWarnings.forEach(
+      (currentWarning) =>
+        (dataToValidate[currentWarning.nextElementSibling.id] =
+          currentWarning.nextElementSibling.value)
+    );
+    const { warnings } = handleValidateInput(dataToValidate);
+    currentWarnings.forEach(
+      (currentWarning) =>
+        !warnings.some(
+          (warning) => Object.keys(warning).toString() === currentWarning.nextSibling.id
+        ) && currentWarning.remove()
+    );
   }
 
   #clearFormErrors() {

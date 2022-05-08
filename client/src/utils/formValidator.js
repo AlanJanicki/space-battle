@@ -10,7 +10,6 @@ import {
 export const handleValidateInput = (formData) => {
   const errors = [];
   const warnings = [];
-
   const passRegex =
     /^(?=[^A-Z\n]*[A-Z])(?=[^a-z\n]*[a-z])(?=[^0-9\n]*[0-9])(?=[^#?!@$%^&*\n-]*[#?!@$%^&*-]).{8,20}$/;
 
@@ -87,7 +86,7 @@ export const handleValidateInput = (formData) => {
       formData[LF_PASSWORD_INPUT_ID].length === 20) ||
     (formData[RF_PASSWORD_INPUT_ID] !== undefined && formData[RF_PASSWORD_INPUT_ID].length === 20)
   ) {
-    formData[RF_PASSWORD_INPUT_ID] !== undefined
+    formData[LF_PASSWORD_INPUT_ID] !== undefined
       ? warnings.push({ [LF_PASSWORD_INPUT_ID]: 'Osiągnięto maksymalną liczbę znaków' })
       : warnings.push({ [RF_PASSWORD_INPUT_ID]: 'Osiągnięto maksymalną liczbę znaków' });
   }
